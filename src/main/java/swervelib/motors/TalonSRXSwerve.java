@@ -12,9 +12,9 @@ import swervelib.encoders.SwerveAbsoluteEncoder;
 import swervelib.encoders.TalonSRXEncoderSwerve;
 import swervelib.math.SwerveMath;
 import swervelib.parser.PIDFConfig;
-import swervelib.parser.json.modules.ConversionFactorsJson;
 import swervelib.telemetry.SwerveDriveTelemetry;
 
+@SuppressWarnings ("deprecation")
 /**
  * {@link com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX} Swerve Motor.
  */
@@ -44,7 +44,6 @@ public class TalonSRXSwerve extends SwerveMotor
   /**
    * Module Conversion factors to use.
    */
-  private       ConversionFactorsJson moduleConversionFactors;
   /**
    * If the TalonSRX configuration has changed.
    */

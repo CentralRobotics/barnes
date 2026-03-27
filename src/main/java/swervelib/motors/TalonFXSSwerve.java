@@ -9,7 +9,6 @@ import com.ctre.phoenix6.configs.TalonFXSConfigurator;
 import com.ctre.phoenix6.controls.MotionMagicVoltage;
 import com.ctre.phoenix6.controls.VelocityVoltage;
 import com.ctre.phoenix6.hardware.TalonFXS;
-import com.ctre.phoenix6.signals.FeedbackSensorSourceValue;
 import com.ctre.phoenix6.signals.InvertedValue;
 import com.ctre.phoenix6.signals.NeutralModeValue;
 import edu.wpi.first.math.system.plant.DCMotor;
@@ -88,6 +87,7 @@ public class TalonFXSSwerve extends SwerveMotor
    * @param isDriveMotor Whether the motor is a drive or steering motor.
    * @param motorType    {@link DCMotor} which the {@link TalonFXS} is attached to.
    */
+    @SuppressWarnings("removal")
   public TalonFXSSwerve(int id, String canbus, boolean isDriveMotor, DCMotor motorType)
   {
     this(new TalonFXS(id, canbus), isDriveMotor, motorType);

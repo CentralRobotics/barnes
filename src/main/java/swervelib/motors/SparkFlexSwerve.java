@@ -151,6 +151,7 @@ public class SparkFlexSwerve extends SwerveMotor
    *
    * @param cfgGiven Given {@link SparkFlexConfig} which should have minimal modifications.
    */
+  @SuppressWarnings("removal")
   public void updateConfig(SparkFlexConfig cfgGiven)
   {
     if (!DriverStation.isDisabled())
@@ -333,6 +334,7 @@ public class SparkFlexSwerve extends SwerveMotor
    * @param config Configuration class holding the PIDF values.
    */
   @Override
+    @SuppressWarnings("removal")
   public void configurePIDF(PIDFConfig config)
   {
     cfg.closedLoop.pidf(config.p, config.i, config.d, config.f)
@@ -389,9 +391,11 @@ public class SparkFlexSwerve extends SwerveMotor
   /**
    * Save the configurations from flash to EEPROM.
    */
+  @SuppressWarnings("removal")
   @Override
   public void burnFlash()
   {
+    
     configureSparkFlex(() -> {
       return motor.configure(cfg, ResetMode.kNoResetSafeParameters, PersistMode.kPersistParameters);
     });
@@ -415,6 +419,7 @@ public class SparkFlexSwerve extends SwerveMotor
    * @param feedforward Feedforward in volt-meter-per-second or kV.
    */
   @Override
+    @SuppressWarnings("removal")
   public void setReference(double setpoint, double feedforward)
   {
 

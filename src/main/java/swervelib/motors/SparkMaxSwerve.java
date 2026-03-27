@@ -31,6 +31,8 @@ import swervelib.telemetry.SwerveDriveTelemetry;
  */
 public class SparkMaxSwerve extends SwerveMotor
 {
+  @SuppressWarnings ("deprecation")
+
 
   /**
    * Config retry delay.
@@ -144,6 +146,8 @@ public class SparkMaxSwerve extends SwerveMotor
    *
    * @param cfgGiven Given {@link SparkMaxConfig} which should have minimal modifications.
    */
+    @SuppressWarnings("removal")
+
   public void updateConfig(SparkMaxConfig cfgGiven)
   {
     if (!DriverStation.isDisabled())
@@ -151,6 +155,7 @@ public class SparkMaxSwerve extends SwerveMotor
       DriverStation.reportWarning("Configuration changes cannot be applied while the robot is enabled.", false);
     }
     cfg.apply(cfgGiven);
+    
     configureSparkMax(() -> motor.configure(cfg, ResetMode.kNoResetSafeParameters, PersistMode.kPersistParameters));
   }
 
@@ -329,6 +334,8 @@ public class SparkMaxSwerve extends SwerveMotor
    * @param config Configuration class holding the PIDF values.
    */
   @Override
+    @SuppressWarnings("removal")
+
   public void configurePIDF(PIDFConfig config)
   {
     cfg.closedLoop.pidf(config.p, config.i, config.d, config.f)
@@ -389,6 +396,8 @@ public class SparkMaxSwerve extends SwerveMotor
    * Save the configurations from flash to EEPROM.
    */
   @Override
+    @SuppressWarnings("removal")
+
   public void burnFlash()
   {
     configureSparkMax(() -> {
@@ -414,6 +423,8 @@ public class SparkMaxSwerve extends SwerveMotor
    * @param feedforward Feedforward in volt-meter-per-second or kV.
    */
   @Override
+    @SuppressWarnings("removal")
+
   public void setReference(double setpoint, double feedforward)
   {
     int pidSlot = 0;
