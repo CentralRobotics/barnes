@@ -23,11 +23,15 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
+import edu.wpi.first.wpilibj2.command.button.CommandGenericHID;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.Constants.OperatorConstants;
+import frc.robot.commands.shooter.Shooter;
+import frc.robot.subsystems.shooter.ShooterSubsystem;
 import frc.robot.subsystems.swervedrive.SwerveSubsystem;
 import frc.robot.util.FeedbackEngine.FeedbackEngine;
+
 
 import java.io.File;
 import swervelib.SwerveInputStream;
@@ -44,10 +48,11 @@ public class RobotContainer {
 
   // Replace with CommandPS4Controller or CommandJoystick if needed
   public final CommandXboxController driverXbox = new CommandXboxController(0);
-  public final GenericHID opPadHid = new GenericHID(1);
+  public final CommandGenericHID opPadHid = new CommandGenericHID(1);
   // The robot's subsystems and commands are defined here...
   private final SwerveSubsystem drivebase = new SwerveSubsystem(
       new File(Filesystem.getDeployDirectory(), "swerve/neo"));
+  private final ShooterSubsystem shooterSubsystem = new ShooterSubsystem(); 
   private final SendableChooser<String> autoChooser = new SendableChooser<>();
   private static final String defaultAuto = "testAuto";
 
@@ -134,6 +139,7 @@ public class RobotContainer {
     Command driveFieldOrientedDirectAngleKeyboard = drivebase.driveFieldOriented(driveDirectAngleKeyboard);
     Command driveFieldOrientedAnglularVelocityKeyboard = drivebase.driveFieldOriented(driveAngularVelocityKeyboard);
     Command driveSetpointGenKeyboard = drivebase.driveWithSetpointGeneratorFieldRelative(driveDirectAngleKeyboard);
+    // Command runShooterFlywheel = shooter.
 
     if (RobotBase.isSimulation()) {
       drivebase.setDefaultCommand(driveFieldOrientedDirectAngleKeyboard);
@@ -165,7 +171,7 @@ public class RobotContainer {
       // new Pose2d(new Translation2d(4, 4), Rotation2d.fromDegrees(0))));
     }
 
-    // ===================[ TEST MODE ONLY ]========================
+    // ===================[ Test mode bindings ]========================
     if (DriverStation.isTest()) {
       drivebase.setDefaultCommand(driveFieldOrientedAnglularVelocity); // Overrides drive command above!
 
@@ -178,7 +184,7 @@ public class RobotContainer {
       driverXbox.rightBumper().whileTrue(drivebase.centerModulesCommand());
     } else {
 
-      // ===================[ TeleOperation Mappings ]========================
+      // ===================[ TeleOperation bindings  ]========================
       driverXbox.x().onTrue(Commands.runOnce(drivebase::addFakeVisionReading));
       driverXbox.start().whileTrue(Commands.none());
       driverXbox.back().whileTrue(Commands.none());
@@ -194,6 +200,10 @@ public class RobotContainer {
               .andThen(FeedbackEngine.doublePulse(driverXbox)
               ));
 
+      opPadHid.button(1).whileTrue(
+       new Shooter(shooterSubsystem, 100)
+    );
+     
 
     }
   }
