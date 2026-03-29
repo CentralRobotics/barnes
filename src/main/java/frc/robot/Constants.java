@@ -74,6 +74,10 @@ public final class Constants {
     //       [ FLYWHEEL MOTOR (CONTROLLERS) ]
     public static final int MOTOR_A_ID = 20; 
     public static final int MOTOR_B_ID = 21;
+    public static final int MOTOR_C_ID = 22;
+    public static final int MOTOR_D_ID = 23;
+
+
 
     //       [ THRUSTER SETTINGS ]
     public static final int FLYWHEEL_RPM = 2; // desired revoltuions per minute of the flywheel, integer is internally multiplied x1000 
