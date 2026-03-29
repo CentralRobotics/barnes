@@ -4,13 +4,14 @@
 
 package frc.robot.subsystems.shooter;
 
-import com.revrobotics.spark.SparkLowLevel.MotorType;
-import com.revrobotics.spark.config.SparkFlexConfig;
-import com.revrobotics.spark.config.SparkBaseConfig.IdleMode;
 import com.revrobotics.PersistMode;
 import com.revrobotics.RelativeEncoder;
 import com.revrobotics.ResetMode;
 import com.revrobotics.spark.SparkFlex;
+import com.revrobotics.spark.SparkLowLevel.MotorType;
+import com.revrobotics.spark.config.SparkBaseConfig.IdleMode;
+import com.revrobotics.spark.config.SparkFlexConfig;
+
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.ShooterConstants;
@@ -86,9 +87,14 @@ public class ShooterSubsystem extends SubsystemBase {
 
 
 
+  public void initialize(){ 
+    SmartDashboard.putString("Shooter Subsystem", "loaded");
+  };
+
   @Override
   public void periodic() {
     SmartDashboard.putNumber("Shooter Motor RPMs", getMotorRPM());
+    SmartDashboard.putString("Shooter Subsystem", "active");
     SmartDashboard.putNumber("Shooter Wheel RPMs", getWheelRPM());
 
   }
