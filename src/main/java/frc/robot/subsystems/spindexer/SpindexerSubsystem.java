@@ -4,11 +4,38 @@
 
 package frc.robot.subsystems.spindexer;
 
+import com.revrobotics.spark.SparkMax;
+import com.revrobotics.spark.config.SparkBaseConfig.IdleMode;
+import com.revrobotics.spark.config.SparkMaxConfig;
+import com.revrobotics.PersistMode;
+import com.revrobotics.ResetMode;
+import com.revrobotics.spark.SparkLowLevel.MotorType;
+
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Constants.SpindexerConstants;
 
 public class SpindexerSubsystem extends SubsystemBase {
   /** Creates a new SpindexerSubsystem. */
-  public SpindexerSubsystem() {}
+
+  private final SparkMax spindexerMotor = new SparkMax(SpindexerConstants.MOTOR_A_ID, MotorType.kBrushless);
+
+  public void runSpindexer() {
+    spindexerMotor.set(100);
+  }
+
+  public void stopSpindexer() {
+    spindexerMotor.set(0);
+  }
+
+  public SpindexerSubsystem() {
+
+    SparkMaxConfig motorConfigsDefault = new SparkMaxConfig();
+    motorConfigsDefault.idleMode(IdleMode.kCoast);
+    spindexerMotor.configure(
+        motorConfigsDefault,
+        ResetMode.kResetSafeParameters,
+        PersistMode.kPersistParameters);
+  }
 
   @Override
   public void periodic() {
