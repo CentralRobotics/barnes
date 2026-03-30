@@ -18,7 +18,7 @@ public class Shooter extends Command {
 
 
 
-  public Command Shooter(ShooterSubsystem shooter, double percentOutput) {
+  public Shooter(ShooterSubsystem shooter, double percentOutput) {
     this.shooter = shooter; 
     this.percentOutput = percentOutput; 
     addRequirements(shooter);
