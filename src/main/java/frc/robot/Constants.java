@@ -87,6 +87,8 @@ public final class Constants {
 
   public static class SpindexerConstants { 
     public static final int MOTOR_A_ID = 31; 
+    public static final int MOTOR_B_ID = 32; 
+
   }
 
 }
