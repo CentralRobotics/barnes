@@ -22,19 +22,19 @@ import frc.robot.Constants.SpindexerConstants;
 public class SpindexerSubsystem extends SubsystemBase {
   /** Creates a new SpindexerSubsystem. */
 
-  private final SparkFlex spindexerMotor = new SparkFlex(SpindexerConstants.MOTOR_A_ID, MotorType.kBrushless);
-  private final SparkFlex spindexerMotorInverse = new SparkFlex(SpindexerConstants.MOTOR_B_ID, MotorType.kBrushless);
-  private final RelativeEncoder spindexerMotorRelativeEncoder = spindexerMotor.getEncoder();
+  // private final SparkFlex spindexerMotor = new SparkFlex(SpindexerConstants.MOTOR_A_ID, MotorType.kBrushless);
+  // private final SparkFlex spindexerMotorInverse = new SparkFlex(SpindexerConstants.MOTOR_B_ID, MotorType.kBrushless);
+  // private final RelativeEncoder spindexerMotorRelativeEncoder = spindexerMotor.getEncoder();
 
 
   public void runSpindexer(){
-    spindexerMotor.set(100);
-    spindexerMotorInverse.set(-100);
+    // spindexerMotor.set(100);
+    // spindexerMotorInverse.set(-100);
   }
 
   public void stopSpindexer(){ 
-    spindexerMotor.set(0);
-    spindexerMotorInverse.set(0);
+    // spindexerMotor.set(0);
+    // spindexerMotorInverse.set(0);
 
   }
  
@@ -44,15 +44,15 @@ public class SpindexerSubsystem extends SubsystemBase {
 
     SparkFlexConfig motorConfigsDefault = new SparkFlexConfig();
     motorConfigsDefault.idleMode(IdleMode.kCoast);
-    spindexerMotor.configure(
-        motorConfigsDefault,
-        ResetMode.kResetSafeParameters,
-        PersistMode.kPersistParameters);
+    // spindexerMotor.configure(
+    //     motorConfigsDefault,
+    //     ResetMode.kResetSafeParameters,
+    //     PersistMode.kPersistParameters);
   }
 
   @Override
   public void periodic() {
 
-    SmartDashboard.putNumber("Spindexer Motor RPMs", spindexerMotorRelativeEncoder.getVelocity());
+    // SmartDashboard.putNumber("Spindexer Motor RPMs", spindexerMotorRelativeEncoder.getVelocity());
   }
 }

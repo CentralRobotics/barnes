@@ -72,8 +72,8 @@ public final class Constants {
     // TEST WITH CAUTION 
 
     //       [ FLYWHEEL MOTOR (CONTROLLERS) ]
-    public static final int MOTOR_A_ID = 20; 
-    public static final int MOTOR_B_ID = 21;
+    public static final int MOTOR_A_ID = 40; 
+    public static final int MOTOR_B_ID = 41;
     public static final int MOTOR_C_ID = 22;
     public static final int MOTOR_D_ID = 23;
 
@@ -86,8 +86,8 @@ public final class Constants {
   }
 
   public static class SpindexerConstants { 
-    public static final int MOTOR_A_ID = 31; 
-    public static final int MOTOR_B_ID = 32; 
+    public static final int MOTOR_A_ID = 49; 
+    public static final int MOTOR_B_ID = 51; 
 
   }
 
