@@ -21,7 +21,7 @@ public class ShooterSubsystem extends SubsystemBase {
   /** Creates a new ShooterSubsystem. */
 
         private final SparkFlex FlywheelMotorA = new SparkFlex(ShooterConstants.MOTOR_A_ID, MotorType.kBrushless);
-        private final SparkFlex FlywheelMotorB = new SparkFlex(41, MotorType.kBrushless);
+        private final SparkFlex FlywheelMotorB = new SparkFlex(ShooterConstants.MOTOR_B_ID, MotorType.kBrushless);
         // private final SparkFlex FlywheelMotorC = new SparkFlex(ShooterConstants.MOTOR_C_ID, MotorType.kBrushless);
         // private final SparkFlex FlywheelMotorD = new SparkFlex(ShooterConstants.MOTOR_D_ID, MotorType.kBrushless);
         private final RelativeEncoder flywheelRelativeEncoderA = FlywheelMotorA.getEncoder(); 
@@ -43,10 +43,10 @@ public class ShooterSubsystem extends SubsystemBase {
         ResetMode.kResetSafeParameters,
         PersistMode.kPersistParameters);
 
-    // FlywheelMotorB.configure(
-    //     followerConfig.follow(FlywheelMotorA),
-    //     ResetMode.kResetSafeParameters,
-    //     PersistMode.kPersistParameters);
+    FlywheelMotorB.configure(
+        followerConfig.follow(FlywheelMotorA),
+        ResetMode.kResetSafeParameters,
+        PersistMode.kPersistParameters);
 
     // FlywheelMotorC.configure(
     //     followerConfig.follow(FlywheelMotorA),
@@ -74,7 +74,7 @@ public class ShooterSubsystem extends SubsystemBase {
 
   public void stopFlywheel() { 
     FlywheelMotorA.set(0);
-    FlywheelMotorA.set(0);
+    FlywheelMotorB.set(0);
 
 
     // FlywheelMotorC.set(0);
