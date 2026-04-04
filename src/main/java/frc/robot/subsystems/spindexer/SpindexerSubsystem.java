@@ -42,8 +42,7 @@ public class SpindexerSubsystem extends SubsystemBase {
   
   public SpindexerSubsystem() {
 
-    SparkFlexConfig motorConfigsDefault = new SparkFlexConfig();
-    motorConfigsDefault.idleMode(IdleMode.kCoast);
+ 
     // spindexerMotor.configure(
     //     motorConfigsDefault,
     //     ResetMode.kResetSafeParameters,

@@ -55,7 +55,7 @@ public final class Constants {
 
   public static class IntakeConstants {
     public static final int MOTOR_ID = 60; 
-    public static final double INTAKE_SPEED = .6; 
+    public static final double INTAKE_SPEED = -.8; 
 
   }
 
@@ -74,8 +74,8 @@ public final class Constants {
     //       [ FLYWHEEL MOTOR (CONTROLLERS) ]
     public static final int MOTOR_A_ID = 40; 
     public static final int MOTOR_B_ID = 41;
-    public static final int MOTOR_C_ID = 22;
-    public static final int MOTOR_D_ID = 23;
+    public static final int MOTOR_C_ID = 42;
+    public static final int MOTOR_D_ID = 43;
 
 
 

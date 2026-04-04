@@ -25,7 +25,7 @@ public class IntakeSubsystem extends SubsystemBase {
   };
 
   public void runIntake() {
-        IntakeRoller.set(IntakeConstants.INTAKE_SPEED);
+        IntakeRoller.set(-100);
     }
 
     // Run intake reverse (optional)

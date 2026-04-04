@@ -27,8 +27,10 @@ import edu.wpi.first.wpilibj2.command.button.CommandGenericHID;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.Constants.OperatorConstants;
+import frc.robot.commands.intake.Intake;
 import frc.robot.commands.shooter.Shooter;
 import frc.robot.commands.spindexer.Spindexer;
+import frc.robot.subsystems.intake.IntakeSubsystem;
 import frc.robot.subsystems.shooter.ShooterSubsystem;
 import frc.robot.subsystems.spindexer.SpindexerSubsystem;
 import frc.robot.subsystems.swervedrive.SwerveSubsystem;
@@ -55,7 +57,7 @@ public class RobotContainer {
   private final SwerveSubsystem drivebase = new SwerveSubsystem(
       new File(Filesystem.getDeployDirectory(), "swerve/neo"));
   private final ShooterSubsystem shooterSubsystem = new ShooterSubsystem(); 
-  private final SpindexerSubsystem spindexerSubsystem = new SpindexerSubsystem(); 
+  private final IntakeSubsystem intakeSubsystem = new IntakeSubsystem(); 
   private final SendableChooser<String> autoChooser = new SendableChooser<>();
   private static final String defaultAuto = "testAuto";
 
@@ -208,7 +210,7 @@ public class RobotContainer {
     );
 
      driverXbox.rightTrigger().whileTrue(
-       new Spindexer(spindexerSubsystem)
+       new Intake(intakeSubsystem)
     );
      
 
