@@ -26,7 +26,7 @@ public final class Constants {
   public static final double ROBOT_MASS = (148 - 20.3) * 0.453592; // 32lbs * kg per pound
   public static final Matter CHASSIS = new Matter(new Translation3d(0, 0, Units.inchesToMeters(8)), ROBOT_MASS);
   public static final double LOOP_TIME = 0.13; // s, 20ms + 110ms sprk max velocity lag
-  public static final double MAX_SPEED = Units.feetToMeters(10);
+  public static final double MAX_SPEED = Units.feetToMeters(11);
   public static final int ControllerConstant = 2;
   // Maximum speed of the robot in meters per second, used to limit acceleration.
 
@@ -77,17 +77,20 @@ public final class Constants {
     public static final int MOTOR_C_ID = 42;
     public static final int MOTOR_D_ID = 43;
 
-
-
-    //       [ THRUSTER SETTINGS ]
-    public static final int FLYWHEEL_RPM = 2; // desired revoltuions per minute of the flywheel, integer is internally multiplied x1000 
-    public static final int FLYWHEEL_RAMP_TIME = 2; // how long it takes to get to the desired RPMs, in seconds 
-
   }
 
+    public static class IndexerConstants { 
+    public static final int MOTOR_A_ID = 44; 
+    public static final int MOTOR_B_ID = 45; 
+
+    public static final int MOTOR_SPEED = 1; 
+    public static final int MOTOR_SPEED_NEGATIVE = -1;  
+  }
+
+
   public static class SpindexerConstants { 
-    public static final int MOTOR_A_ID = 49; 
-    public static final int MOTOR_B_ID = 51; 
+    public static final int MOTOR_A_ID = 46; 
+    public static final int MOTOR_B_ID = 47; 
 
   }
 

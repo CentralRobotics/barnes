@@ -18,23 +18,33 @@ import edu.wpi.first.wpilibj.motorcontrol.Spark;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.SpindexerConstants;
+import frc.robot.Constants.IndexerConstants;
+
+
 
 public class SpindexerSubsystem extends SubsystemBase {
   /** Creates a new SpindexerSubsystem. */
 
-  // private final SparkFlex spindexerMotor = new SparkFlex(SpindexerConstants.MOTOR_A_ID, MotorType.kBrushless);
-  // private final SparkFlex spindexerMotorInverse = new SparkFlex(SpindexerConstants.MOTOR_B_ID, MotorType.kBrushless);
-  // private final RelativeEncoder spindexerMotorRelativeEncoder = spindexerMotor.getEncoder();
+  private final SparkFlex spindexerMotor = new SparkFlex(SpindexerConstants.MOTOR_A_ID, MotorType.kBrushless);
+  private final SparkFlex spindexerMotorInverse = new SparkFlex(SpindexerConstants.MOTOR_B_ID, MotorType.kBrushless);
+  private final SparkMax IndexerMotorA = new SparkMax(IndexerConstants.MOTOR_A_ID, MotorType.kBrushless);
+  private final SparkMax IndexerMotorB = new SparkMax(IndexerConstants.MOTOR_B_ID, MotorType.kBrushless);
+  private final RelativeEncoder spindexerMotorRelativeEncoder = spindexerMotor.getEncoder();
 
 
-  public void runSpindexer(){
-    // spindexerMotor.set(100);
-    // spindexerMotorInverse.set(-100);
+  public void runCombodexer(){
+    spindexerMotor.set(100);
+    spindexerMotorInverse.set(-100);
+
+    IndexerMotorA.set(IndexerConstants.MOTOR_SPEED);
+    IndexerMotorB.set(IndexerConstants.MOTOR_SPEED_NEGATIVE);
   }
 
-  public void stopSpindexer(){ 
-    // spindexerMotor.set(0);
-    // spindexerMotorInverse.set(0);
+  public void stopCombodexer(){ 
+    spindexerMotor.set(0);
+    spindexerMotorInverse.set(0);
+    IndexerMotorA.set(0);
+    IndexerMotorB.set(0);
 
   }
  

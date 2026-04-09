@@ -21,19 +21,19 @@ public class Spindexer extends Command {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    spindexer.runSpindexer();
+    spindexer.runCombodexer();
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    spindexer.runSpindexer();
+    spindexer.runCombodexer();
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-        spindexer.stopSpindexer();
+        spindexer.stopCombodexer();
   }
 
   // Returns true when the command should end.
