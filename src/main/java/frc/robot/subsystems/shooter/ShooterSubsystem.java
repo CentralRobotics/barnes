@@ -20,11 +20,11 @@ import frc.robot.Constants.ShooterConstants;
 public class ShooterSubsystem extends SubsystemBase {
   /** Creates a new ShooterSubsystem. */
 
-        private final SparkFlex FlywheelMotorA = new SparkFlex(ShooterConstants.MOTOR_A_ID, MotorType.kBrushless);
+        // private final SparkFlex FlywheelMotorA = new SparkFlex(ShooterConstants.MOTOR_A_ID, MotorType.kBrushless);
         private final SparkFlex FlywheelMotorB = new SparkFlex(ShooterConstants.MOTOR_B_ID, MotorType.kBrushless);
-        // private final SparkFlex FlywheelMotorC = new SparkFlex(ShooterConstants.MOTOR_C_ID, MotorType.kBrushless);
-        // private final SparkFlex FlywheelMotorD = new SparkFlex(ShooterConstants.MOTOR_D_ID, MotorType.kBrushless);
-        private final RelativeEncoder flywheelRelativeEncoderA = FlywheelMotorA.getEncoder(); 
+        private final SparkFlex FlywheelMotorC = new SparkFlex(ShooterConstants.MOTOR_C_ID, MotorType.kBrushless);
+        private final SparkFlex FlywheelMotorD = new SparkFlex(ShooterConstants.MOTOR_D_ID, MotorType.kBrushless);
+        private final RelativeEncoder flywheelRelativeEncoderA = FlywheelMotorB.getEncoder(); 
         // private final RelativeEncoder flywheelRelativeEncoderB = FlywheelMotorB.getEncoder();
         // private final RelativeEncoder flywheelRelativeEncoderC = FlywheelMotorC.getEncoder();
         // private final RelativeEncoder flywheelRelativeEncoderD = FlywheelMotorD.getEncoder();
@@ -36,49 +36,45 @@ public class ShooterSubsystem extends SubsystemBase {
     leaderConfig.idleMode(IdleMode.kCoast); 
     SparkFlexConfig followerConfig = new SparkFlexConfig(); 
     followerConfig.idleMode(IdleMode.kCoast);
+    followerConfig.inverted(true);
+
 
 // Paremeter configs 
-    FlywheelMotorA.configure(
+    FlywheelMotorB.configure(
         leaderConfig,
         ResetMode.kResetSafeParameters,
         PersistMode.kPersistParameters);
 
-    FlywheelMotorB.configure(
-        followerConfig.follow(FlywheelMotorA),
+
+    FlywheelMotorC.configure(
+        followerConfig,
         ResetMode.kResetSafeParameters,
         PersistMode.kPersistParameters);
 
-    // FlywheelMotorC.configure(
-    //     followerConfig.follow(FlywheelMotorA),
-    //     ResetMode.kResetSafeParameters,
-    //     PersistMode.kPersistParameters);
-
-    // FlywheelMotorD.configure(
-    //     followerConfig.follow(FlywheelMotorA),
-    //     ResetMode.kResetSafeParameters,
-    //     PersistMode.kPersistParameters);
+    FlywheelMotorD.configure(
+      leaderConfig,
+                ResetMode.kResetSafeParameters,
+        PersistMode.kPersistParameters);
   
 
   };
 
-  public void rampFlywheel (double speedPercent) { 
+  public void rampFlywheel () { 
     
-    FlywheelMotorA.set(-speedPercent);
-    FlywheelMotorB.set(speedPercent);
-    // FlywheelMotorC.set(speedPercent);
-    // FlywheelMotorD.set(-speedPercent);
-    System.out.println("shooter running");
+    FlywheelMotorB.set(.9);
+    FlywheelMotorC.set( .9);
+    FlywheelMotorD.set(.9);
 
     
   }
 
   public void stopFlywheel() { 
-    FlywheelMotorA.set(0);
-    FlywheelMotorB.set(0);
+  
+    FlywheelMotorB.stopMotor();
 
 
-    // FlywheelMotorC.set(0);
-    // FlywheelMotorD.set(0);
+    FlywheelMotorC.stopMotor();
+    FlywheelMotorD.stopMotor();
 
   }
 

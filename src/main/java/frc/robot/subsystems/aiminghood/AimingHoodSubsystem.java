@@ -37,33 +37,5 @@ import java.util.function.Supplier;
 
 public class AimingHoodSubsystem extends SubsystemBase
 {
-    private final Supplier<Pose2d> poseSupplier;
-
-    private static final Translation2d HUB_POSITION = 
-        new Translation2d(Constants.AimingHoodConstants.HUB_POS_X, Constants.AimingHoodConstants.HUB_POS_Y);
-
-    public AimingHoodSubsystem(Supplier<Pose2d> poseSupplier){
-        this.poseSupplier = poseSupplier;
-    }
-
-    public Rotation2d getDesiredAngle(){    
-        Pose2d robotPose = poseSupplier.get();
-        Translation2d toTarget =
-            HUB_POSITION.minus(robotPose.getTranslation());
-
-        Rotation2d fieldAngle = toTarget.getAngle();
-
-        return fieldAngle.minus(robotPose.getRotation());
-    }
-
-    @Override
-    public void periodic(){
-        Rotation2d desiredAngle = getDesiredAngle();
-
-        setHoodAngle(desiredAngle);
-    }
-
-    private void setHoodAngle(Rotation2d angle){
-
-    }
+   
 }

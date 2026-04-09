@@ -24,8 +24,10 @@ import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.Constants.OperatorConstants;
 import frc.robot.commands.intake.Intake;
 import frc.robot.commands.shooter.Shooter;
+import frc.robot.commands.spindexer.Spindexer;
 import frc.robot.subsystems.intake.IntakeSubsystem;
 import frc.robot.subsystems.shooter.ShooterSubsystem;
+import frc.robot.subsystems.spindexer.SpindexerSubsystem;
 import frc.robot.subsystems.swervedrive.SwerveSubsystem;
 import frc.robot.util.FeedbackEngine.FeedbackEngine;
 
@@ -51,7 +53,7 @@ public class RobotContainer
 
   private final ShooterSubsystem shooterSubsystem = new ShooterSubsystem(); 
   private final IntakeSubsystem intakeSubsystem = new IntakeSubsystem(); 
-
+private final SpindexerSubsystem spindexerSubsystem = new SpindexerSubsystem();
   /**
    * Converts driver input into a field-relative ChassisSpeeds that is controlled by angular velocity.
    */
@@ -227,7 +229,9 @@ public class RobotContainer
        new Intake(intakeSubsystem)
     );
      
-
+driverXbox.povDown().whileTrue(
+       new Spindexer(spindexerSubsystem)
+    );
     }
 
   }

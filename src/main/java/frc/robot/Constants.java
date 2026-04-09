@@ -61,6 +61,7 @@ public final class Constants {
 
   public static class AimingHoodConstants {
     //below two values are placeholder values currently
+    public static final int MOTOR_ID = 48;
     public static final double HUB_POS_X = 0.0;
     public static final double HUB_POS_Y = 0.0;
   }

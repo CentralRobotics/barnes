@@ -27,20 +27,20 @@ public class Shooter extends Command {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-        shooter.rampFlywheel(percentOutput);
+        shooter.rampFlywheel();
 
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    shooter.rampFlywheel(percentOutput);
+    shooter.rampFlywheel();
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-        shooter.rampFlywheel(0);
+        shooter.stopFlywheel();
   }
 
   // Returns true when the command should end.

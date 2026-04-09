@@ -27,37 +27,55 @@ public class SpindexerSubsystem extends SubsystemBase {
 
   private final SparkFlex spindexerMotor = new SparkFlex(SpindexerConstants.MOTOR_A_ID, MotorType.kBrushless);
   private final SparkFlex spindexerMotorInverse = new SparkFlex(SpindexerConstants.MOTOR_B_ID, MotorType.kBrushless);
-  private final SparkMax IndexerMotorA = new SparkMax(IndexerConstants.MOTOR_A_ID, MotorType.kBrushless);
-  private final SparkMax IndexerMotorB = new SparkMax(IndexerConstants.MOTOR_B_ID, MotorType.kBrushless);
+  // private final SparkMax IndexerMotorA = new SparkMax(IndexerConstants.MOTOR_A_ID, MotorType.kBrushless);
+  // private final SparkMax IndexerMotorB = new SparkMax(IndexerConstants.MOTOR_B_ID, MotorType.kBrushless);
   private final RelativeEncoder spindexerMotorRelativeEncoder = spindexerMotor.getEncoder();
+
+   public SpindexerSubsystem() {
+
+   SparkFlexConfig leaderConfig = new SparkFlexConfig();
+    leaderConfig.idleMode(IdleMode.kCoast); 
+        leaderConfig.inverted(true);
+
+    SparkFlexConfig followerConfig = new SparkFlexConfig(); 
+    followerConfig.idleMode(IdleMode.kCoast);
+    followerConfig.inverted(false);
+
+
+// Paremeter configs 
+    spindexerMotor.configure(
+        leaderConfig,
+        ResetMode.kResetSafeParameters,
+        PersistMode.kPersistParameters);
+
+           spindexerMotorInverse.configure(
+        followerConfig,
+        ResetMode.kResetSafeParameters,
+        PersistMode.kPersistParameters);
+
+
+  };
 
 
   public void runCombodexer(){
-    spindexerMotor.set(100);
-    spindexerMotorInverse.set(-100);
+    spindexerMotor.set(.5);
+    spindexerMotorInverse.set(.5);
 
-    IndexerMotorA.set(IndexerConstants.MOTOR_SPEED);
-    IndexerMotorB.set(IndexerConstants.MOTOR_SPEED_NEGATIVE);
+    // IndexerMotorA.set(IndexerConstants.MOTOR_SPEED);
+    // IndexerMotorB.set(IndexerConstants.MOTOR_SPEED_NEGATIVE);
   }
 
   public void stopCombodexer(){ 
-    spindexerMotor.set(0);
-    spindexerMotorInverse.set(0);
-    IndexerMotorA.set(0);
-    IndexerMotorB.set(0);
+    spindexerMotor.stopMotor();
+    spindexerMotorInverse.stopMotor();
+    // IndexerMotorA.set(0);
+    // IndexerMotorB.set(0);
 
   }
  
 
   
-  public SpindexerSubsystem() {
-
  
-    // spindexerMotor.configure(
-    //     motorConfigsDefault,
-    //     ResetMode.kResetSafeParameters,
-    //     PersistMode.kPersistParameters);
-  }
 
   @Override
   public void periodic() {
