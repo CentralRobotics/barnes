@@ -217,20 +217,21 @@ private final SpindexerSubsystem spindexerSubsystem = new SpindexerSubsystem();
               FeedbackEngine.success(driverXbox)));
 
       driverXbox.rightBumper().whileTrue(
-          drivebase.centerModulesCommand()
-              .andThen(FeedbackEngine.doublePulse(driverXbox)
+          drivebase.centerModulesCommand().andThen(FeedbackEngine.doublePulse(driverXbox)
               ));
 
       driverXbox.leftTrigger().whileTrue(
-       new Shooter(shooterSubsystem, 100)
+       new Shooter(shooterSubsystem).andThen(FeedbackEngine.doublePulse(driverXbox)
+              )
     );
 
      driverXbox.rightTrigger().whileTrue(
-       new Intake(intakeSubsystem)
+       new Intake(intakeSubsystem).andThen(FeedbackEngine.doublePulse(driverXbox)
+              )
     );
      
 driverXbox.povDown().whileTrue(
-       new Spindexer(spindexerSubsystem)
+       new Spindexer(spindexerSubsystem) .andThen(FeedbackEngine.doublePulse(driverXbox))
     );
     }
 

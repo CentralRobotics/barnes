@@ -10,7 +10,6 @@ import com.revrobotics.spark.SparkMax;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.IntakeConstants;
-import frc.robot.util.Logging.DataManager;
 
 
 public class IntakeSubsystem extends SubsystemBase {
@@ -42,7 +41,6 @@ public class IntakeSubsystem extends SubsystemBase {
     // This method will be called once per scheduler run
   }
   public void init(){
-    DataManager.LogToConsole("Intake Subsystem Enabled");
 
   }
 }

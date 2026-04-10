@@ -14,13 +14,11 @@ public class Shooter extends Command {
   /** Creates a new shooter. */
 
   private final ShooterSubsystem shooter; 
-  private final double percentOutput; 
 
 
 
-  public Shooter(ShooterSubsystem shooter, double percentOutput) {
+  public Shooter(ShooterSubsystem shooter) {
     this.shooter = shooter; 
-    this.percentOutput = percentOutput; 
     addRequirements(shooter);
   }
 
