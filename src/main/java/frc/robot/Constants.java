@@ -84,6 +84,8 @@ public final class Constants {
     public static final int MOTOR_B_ID = 45;
     public static final int MOTOR_C_ID = 48; 
     public static final int MOTOR_D_ID = 49;  
+ public static final int SMOTOR_A_ID = 46; 
+    public static final int SMOTOR_B_ID = 47; 
 
     public static final double SPINDEXER_SPEED = 0.5; 
     public static final double INDEXER_SPEED = 0.5; 

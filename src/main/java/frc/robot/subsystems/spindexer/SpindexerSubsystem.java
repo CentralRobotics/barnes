@@ -25,8 +25,8 @@ public class SpindexerSubsystem extends SubsystemBase {
   private final SparkFlex spindexerMotorInverse = new SparkFlex(CombodexerConstants.MOTOR_B_ID, MotorType.kBrushless);
 
 
-  private final SparkMax IndexerMotorA = new SparkMax(CombodexerConstants.MOTOR_A_ID, MotorType.kBrushless);
-  private final SparkMax IndexerMotorB = new SparkMax(CombodexerConstants.MOTOR_B_ID, MotorType.kBrushless);
+  private final SparkMax IndexerMotorA = new SparkMax(CombodexerConstants.SMOTOR_A_ID, MotorType.kBrushless);
+  private final SparkMax IndexerMotorB = new SparkMax(CombodexerConstants.SMOTOR_B_ID, MotorType.kBrushless);
 
 
 
