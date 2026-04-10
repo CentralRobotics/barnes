@@ -9,13 +9,11 @@ import com.revrobotics.spark.config.SparkBaseConfig.IdleMode;
 import com.revrobotics.spark.config.SparkFlexConfig;
 import com.revrobotics.spark.config.SparkMaxConfig;
 import com.revrobotics.PersistMode;
-import com.revrobotics.RelativeEncoder;
 import com.revrobotics.ResetMode;
 import com.revrobotics.spark.SparkLowLevel.MotorType;
 import com.revrobotics.spark.SparkMax;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.Constants.SpindexerConstants;
 import frc.robot.Constants.CombodexerConstants;
 
 
@@ -31,8 +29,6 @@ public class SpindexerSubsystem extends SubsystemBase {
   private final SparkMax IndexerMotorB = new SparkMax(CombodexerConstants.MOTOR_B_ID, MotorType.kBrushless);
 
 
-
-  private final RelativeEncoder spindexerMotorRelativeEncoder = spindexerMotor.getEncoder();
 
    public SpindexerSubsystem() {
 
@@ -72,7 +68,6 @@ public class SpindexerSubsystem extends SubsystemBase {
         indexerBConfig,
         ResetMode.kResetSafeParameters,
         PersistMode.kPersistParameters);
-
 
   };
   
