@@ -226,12 +226,12 @@ private final SpindexerSubsystem spindexerSubsystem = new SpindexerSubsystem();
     );
 
      driverXbox.rightTrigger().whileTrue(
-       new Intake(intakeSubsystem).andThen(FeedbackEngine.doublePulse(driverXbox)
+       new Intake(intakeSubsystem).andThen(FeedbackEngine.alternating(driverXbox)
               )
     );
      
 driverXbox.povDown().whileTrue(
-       new Spindexer(spindexerSubsystem) .andThen(FeedbackEngine.doublePulse(driverXbox))
+       new Spindexer(spindexerSubsystem) .andThen(FeedbackEngine.alternating(driverXbox))
     );
     }
 
