@@ -18,7 +18,7 @@ import edu.wpi.first.wpilibj.motorcontrol.Spark;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.SpindexerConstants;
-import frc.robot.Constants.IndexerConstants;
+import frc.robot.Constants.CombodexerConstants;
 
 
 
@@ -27,8 +27,13 @@ public class SpindexerSubsystem extends SubsystemBase {
 
   private final SparkFlex spindexerMotor = new SparkFlex(SpindexerConstants.MOTOR_A_ID, MotorType.kBrushless);
   private final SparkFlex spindexerMotorInverse = new SparkFlex(SpindexerConstants.MOTOR_B_ID, MotorType.kBrushless);
+
+
   // private final SparkMax IndexerMotorA = new SparkMax(IndexerConstants.MOTOR_A_ID, MotorType.kBrushless);
   // private final SparkMax IndexerMotorB = new SparkMax(IndexerConstants.MOTOR_B_ID, MotorType.kBrushless);
+
+
+
   private final RelativeEncoder spindexerMotorRelativeEncoder = spindexerMotor.getEncoder();
 
    public SpindexerSubsystem() {
@@ -41,6 +46,9 @@ public class SpindexerSubsystem extends SubsystemBase {
     followerConfig.idleMode(IdleMode.kCoast);
     followerConfig.inverted(false);
 
+
+    SparkMaxConfig indexerAConfig = new SparkMaxConfig(); 
+    indexerAConfig.inverted(CombodexerConstants.INVERTED_INDEXER_STATE);
 
 // Paremeter configs 
     spindexerMotor.configure(
@@ -58,11 +66,11 @@ public class SpindexerSubsystem extends SubsystemBase {
 
 
   public void runCombodexer(){
-    spindexerMotor.set(.5);
-    spindexerMotorInverse.set(.5);
+    spindexerMotor.set(CombodexerConstants.SPINDEXER_SPEED);
+    spindexerMotorInverse.set(CombodexerConstants.SPINDEXER_SPEED);
 
-    // IndexerMotorA.set(IndexerConstants.MOTOR_SPEED);
-    // IndexerMotorB.set(IndexerConstants.MOTOR_SPEED_NEGATIVE);
+    // IndexerMotorA.set(CombodexerConstants.INDEXER_SPEED);
+    // IndexerMotorB.set(CombodexerConstants.INDEXER_SPEED);
   }
 
   public void stopCombodexer(){ 

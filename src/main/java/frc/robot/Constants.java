@@ -80,12 +80,16 @@ public final class Constants {
 
   }
 
-    public static class IndexerConstants { 
+    public static class CombodexerConstants { 
     public static final int MOTOR_A_ID = 44; 
-    public static final int MOTOR_B_ID = 45; 
+    public static final int MOTOR_B_ID = 45;
+    public static final int MOTOR_C_ID = 48; 
+    public static final int MOTOR_D_ID = 49;  
 
-    public static final int MOTOR_SPEED = 1; 
-    public static final int MOTOR_SPEED_NEGATIVE = -1;  
+    public static final double SPINDEXER_SPEED = 0.5; 
+    public static final double INDEXER_SPEED = 0.5; 
+    public static final boolean INVERTED_INDEXER_STATE = true; 
+
   }
 
 
