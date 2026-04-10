@@ -5,7 +5,6 @@
 package frc.robot.subsystems.spindexer;
 
 import com.revrobotics.spark.SparkFlex;
-import com.revrobotics.spark.SparkMax;
 import com.revrobotics.spark.config.SparkBaseConfig.IdleMode;
 import com.revrobotics.spark.config.SparkFlexConfig;
 import com.revrobotics.spark.config.SparkMaxConfig;
@@ -13,9 +12,8 @@ import com.revrobotics.PersistMode;
 import com.revrobotics.RelativeEncoder;
 import com.revrobotics.ResetMode;
 import com.revrobotics.spark.SparkLowLevel.MotorType;
+import com.revrobotics.spark.SparkMax;
 
-import edu.wpi.first.wpilibj.motorcontrol.Spark;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.SpindexerConstants;
 import frc.robot.Constants.CombodexerConstants;
@@ -25,12 +23,12 @@ import frc.robot.Constants.CombodexerConstants;
 public class SpindexerSubsystem extends SubsystemBase {
   /** Creates a new SpindexerSubsystem. */
 
-  private final SparkFlex spindexerMotor = new SparkFlex(SpindexerConstants.MOTOR_A_ID, MotorType.kBrushless);
-  private final SparkFlex spindexerMotorInverse = new SparkFlex(SpindexerConstants.MOTOR_B_ID, MotorType.kBrushless);
+  private final SparkFlex spindexerMotor = new SparkFlex(CombodexerConstants.MOTOR_A_ID, MotorType.kBrushless);
+  private final SparkFlex spindexerMotorInverse = new SparkFlex(CombodexerConstants.MOTOR_B_ID, MotorType.kBrushless);
 
 
-  // private final SparkMax IndexerMotorA = new SparkMax(IndexerConstants.MOTOR_A_ID, MotorType.kBrushless);
-  // private final SparkMax IndexerMotorB = new SparkMax(IndexerConstants.MOTOR_B_ID, MotorType.kBrushless);
+  private final SparkMax IndexerMotorA = new SparkMax(CombodexerConstants.MOTOR_A_ID, MotorType.kBrushless);
+  private final SparkMax IndexerMotorB = new SparkMax(CombodexerConstants.MOTOR_B_ID, MotorType.kBrushless);
 
 
 
@@ -48,7 +46,9 @@ public class SpindexerSubsystem extends SubsystemBase {
 
 
     SparkMaxConfig indexerAConfig = new SparkMaxConfig(); 
+    SparkMaxConfig indexerBConfig = new SparkMaxConfig(); 
     indexerAConfig.inverted(CombodexerConstants.INVERTED_INDEXER_STATE);
+    indexerBConfig.inverted(CombodexerConstants.INVERTED_INDEXER_STATE);
 
 // Paremeter configs 
     spindexerMotor.configure(
@@ -61,8 +61,23 @@ public class SpindexerSubsystem extends SubsystemBase {
         ResetMode.kResetSafeParameters,
         PersistMode.kPersistParameters);
 
+// ---- 
+
+        IndexerMotorA.configure(
+        indexerAConfig,
+        ResetMode.kResetSafeParameters,
+        PersistMode.kPersistParameters);
+
+           IndexerMotorB.configure(
+        indexerBConfig,
+        ResetMode.kResetSafeParameters,
+        PersistMode.kPersistParameters);
+
 
   };
+  
+
+  
 
 
   public void runCombodexer(){
